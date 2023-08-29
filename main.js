@@ -49,7 +49,6 @@ const mostrarProductos = () =>{
 const btnAgregar = document.getElementById(`producto-agregar-${index}`)
 
 btnAgregar.addEventListener("click", () => {
-    console.log(btnAgregar)
     Toastify({
         text: `Producto agregado: ${producto.nombre} ${producto.medida}`,
         duration: 2000,
@@ -66,7 +65,6 @@ btnAgregar.addEventListener("click", () => {
  //listener para agregar evento de agregar productos al carro
     id.addEventListener("click", (e) =>{ 
         const seRepite = carroCompras.some(producto => producto.id ==index)
-    console.log(seRepite)
     if (!seRepite){
         carroCompras.push(producto) // Agregar el producto al carrito
         mostrarCarro()
@@ -74,8 +72,6 @@ btnAgregar.addEventListener("click", () => {
         cantidadCarro++
         productosCarro.innerText = cantidadCarro
         precioTotal.innerText = "$" + precioTotalCarro
-        console.log(cantidadCarro)
-        console.log(carroCompras)
         actualizarPrecio(carroCompras)
     } else {
         // Si el producto ya está en el carrito, buscamos el índice del producto
@@ -88,8 +84,6 @@ btnAgregar.addEventListener("click", () => {
         cantidadCarro++
         productosCarro.innerText = cantidadCarro
         precioTotal.innerText = "$" + precioTotalCarro
-        console.log(cantidadCarro)
-        console.log("Cantidad sumada:", carroCompras[indexEnCarrito].cantidad)
         actualizarPrecio(carroCompras)
     }
     })        
@@ -100,3 +94,17 @@ btnAgregar.addEventListener("click", () => {
 
 // mostrar html en carro
 mostrarProductos()
+
+// fetch
+let availableProducts = [];
+
+const getProducts = async () => {
+  try {
+    const response = await fetch("chind4mo.github.io/ProyectoJSn3/");
+    const products = await response.json();
+    availableProducts = products;
+    return products;
+  } catch (error) {
+    console.log(error);
+  }
+};

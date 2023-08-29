@@ -30,7 +30,8 @@ input {
 .contenedor {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    background-color: darkslategray;
+    background-color: #9A3B3B;
+    justify-content: center;
 }
 
 aside {
@@ -49,6 +50,7 @@ aside {
     font-size: 20px;
     text-align: center;
 }
+
 
 .logo {
     font-weight: 400;
@@ -73,12 +75,13 @@ aside {
 }
 
 .texto-footer {
-    color: gray;
+    color: black;
     font-size: .85rem;
+    background-color: #9A3B3B;
 }
 
 main {
-    background-color: whitesmoke;
+    background-color: #C08261;
     margin: 1rem;
     margin-left: 0;
     border-radius: 2rem;
@@ -111,6 +114,7 @@ main {
 .producto-imagen-carro {
     max-width: 110px;
     border-radius: 1rem;
+    background-color: #888;
 }
 
 
@@ -126,7 +130,7 @@ main {
 
 
 .producto-detalles {
-    background-color: darkslategray;
+    background-color: #9A3B3B;
     color: whitesmoke;
     padding: 0.5rem;
     border-radius: 1rem;
@@ -137,7 +141,7 @@ main {
 
 
 .producto-detalles-carrito {
-    background-color: darkslategray;
+    background-color: #9A3B3B;
     color: whitesmoke;
     padding: 0.5rem;
     border-radius: 1rem;
@@ -179,7 +183,7 @@ main {
 
 /* Estilo para el contenido del modal */
 .modal-content {
-    background-color: #fff;
+    background-color: #C08261;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -236,4 +240,82 @@ main {
 .producto-detalles-carrito {
     margin-left: 1rem;
     /* Margen a la izquierda para separar del contenido de la imagen */
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #9BA4B5;
+    text-align: center;
+}
+
+.pie-pagina {
+    width: 100%;
+    background-color: #E2C799;
+    border-radius: 15px;
+    height: 200px;
+}
+
+
+
+.pie-pagina .grupo-1 {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+
+.pie-pagina .grupo-1 .box figure {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pie-pagina .grupo-1 .box figure img {
+    width: 50px;
+    height: 50px;
+}
+
+.pie-pagina .grupo-1 .box h2 {
+    color: black;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.pie-pagina .grupo-1 .box p {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.pie-pagina .grupo-1 .red-social a {
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #0d2033;
+    text-align: center;
+    transition: all 300ms ease;
+}
+
+.pie-pagina .grupo-1 .red-social a:hover {
+    color: aqua;
+}
+
+.pie-pagina .grupo-2 {
+    background-color: #0a1a2a;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.pie-pagina .grupo-2 small {
+    font-size: 15px;
 }

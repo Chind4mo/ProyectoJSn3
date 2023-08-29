@@ -83,8 +83,6 @@ const actualizarPrecio = (carrito) => {
     const totalCompra = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0)
     productosCarro.innerText = totalCantidad
     precioTotal.innerText = "$" + totalCompra
-    console.log(productosCarro)
-    console.log(precioTotal)
     guardarCarritoStorage(carroCompras)
 
 }
