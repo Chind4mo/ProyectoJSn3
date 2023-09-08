@@ -1,11 +1,11 @@
 // array de productos
 const productos = [
-    {id:0, nombre:"Tropical", medida: "190x80", tecnologia: "Espuma", densidad: "Baja densidad", peso: 60, precio: 40000, cantidad: 1, imagen: "images/tropical 140.jpg"},
-    {id:1, nombre:"Princess", medida: "190x80", tecnologia: "Espuma", densidad: "Media densidad", peso: 85, precio: 50000, cantidad: 1, imagen: "images/Princess-80-x23.jpg"},
-    {id:2, nombre:"Exclusive", medida: "190x80", tecnologia: "Espuma", densidad: "Alta densidad", peso: 120, precio: 60000, cantidad: 1, imagen: "images/Exclusive-80.jpg"},
-    {id:3, nombre:"Tropical", medida: "190x140", tecnologia: "Espuma", densidad: "Baja densidad", peso: 120, precio: 80000, cantidad: 1, imagen: "images/tropical 140.jpg"},
-    {id:4, nombre:"Princess", medida: "190x140", tecnologia: "Espuma", densidad: "Media densidad", peso: 160, precio: 100000, cantidad: 1, imagen: "images/Princess-80-x23.jpg"},
-    {id:5, nombre:"Exclusive", medida: "190x140", tecnologia: "Espuma", densidad: "Alta densidad", peso: 200, precio: 120000, cantidad: 1, imagen: "images/Exclusive-80.jpg"}
+    { id: 0, nombre: "Tropical", medida: "190x80", tecnologia: "Espuma", densidad: "Baja densidad", peso: 60, precio: 40000, cantidad: 1, imagen: "images/tropical 140.jpg" },
+    { id: 1, nombre: "Princess", medida: "190x80", tecnologia: "Espuma", densidad: "Media densidad", peso: 85, precio: 50000, cantidad: 1, imagen: "images/Princess-80-x23.jpg" },
+    { id: 2, nombre: "Exclusive", medida: "190x80", tecnologia: "Espuma", densidad: "Alta densidad", peso: 120, precio: 60000, cantidad: 1, imagen: "images/Exclusive-80.jpg" },
+    { id: 3, nombre: "Tropical", medida: "190x140", tecnologia: "Espuma", densidad: "Baja densidad", peso: 120, precio: 80000, cantidad: 1, imagen: "images/tropical 140.jpg" },
+    { id: 4, nombre: "Princess", medida: "190x140", tecnologia: "Espuma", densidad: "Media densidad", peso: 160, precio: 100000, cantidad: 1, imagen: "images/Princess-80-x23.jpg" },
+    { id: 5, nombre: "Exclusive", medida: "190x140", tecnologia: "Espuma", densidad: "Alta densidad", peso: 200, precio: 120000, cantidad: 1, imagen: "images/Exclusive-80.jpg" }
 ]
 
 //Array carrito
@@ -23,9 +23,9 @@ let cantidadCarro = 0
 let precioTotalCarro = 0
 
 //Funcion que carga los productos del array
-const mostrarProductos = () =>{ 
+const mostrarProductos = () => {
     productos.forEach((producto, index) => {
-        
+
         const div = document.createElement("div")
         div.innerHTML += `
         <div class="producto">
@@ -40,71 +40,104 @@ const mostrarProductos = () =>{
                             </div>
                     </div>
         `
-        
+
         listadoProductos.appendChild(div)
 
         const id = document.getElementById(`producto-agregar-${index}`)
 
-// para mostrar cosas que se agregan al carro con toastify
-const btnAgregar = document.getElementById(`producto-agregar-${index}`)
+        // para mostrar cosas que se agregan al carro con toastify
+        const btnAgregar = document.getElementById(`producto-agregar-${index}`)
 
-btnAgregar.addEventListener("click", () => {
-    Toastify({
-        text: `Producto agregado: ${producto.nombre} ${producto.medida}`,
-        duration: 2000,
-        gravity: "top",
-        position: "right",
-        style:{
-            background: "linear-gradient(to bottom, #3498db, #87ceeb)",
-            borderRadius: "1rem"
-        }
+        btnAgregar.addEventListener("click", () => {
+            Toastify({
+                text: `Producto agregado: ${producto.nombre} ${producto.medida}`,
+                duration: 2000,
+                gravity: "top",
+                position: "right",
+                style: {
+                    background: "linear-gradient(to bottom, #3498db, #87ceeb)",
+                    borderRadius: "1rem"
+                }
 
-    }).showToast()
-})
+            }).showToast()
+        })
 
- //listener para agregar evento de agregar productos al carro
-    id.addEventListener("click", (e) =>{ 
-        const seRepite = carroCompras.some(producto => producto.id ==index)
-    if (!seRepite){
-        carroCompras.push(producto) // Agregar el producto al carrito
-        mostrarCarro()
-        precioTotalCarro+=producto.precio
-        cantidadCarro++
-        productosCarro.innerText = cantidadCarro
-        precioTotal.innerText = "$" + precioTotalCarro
-        actualizarPrecio(carroCompras)
-    } else {
-        // Si el producto ya está en el carrito, buscamos el índice del producto
-        const indexEnCarrito = carroCompras.findIndex(producto => producto.id === index)
+        //listener para agregar evento de agregar productos al carro
+        id.addEventListener("click", (e) => {
+            const seRepite = carroCompras.some(producto => producto.id == index)
+            if (!seRepite) {
+                carroCompras.push(producto) // Agregar el producto al carrito
+                mostrarCarro()
+                precioTotalCarro += producto.precio
+                cantidadCarro++
+                productosCarro.innerText = cantidadCarro
+                precioTotal.innerText = "$" + precioTotalCarro
+                actualizarPrecio(carroCompras)
+            } else {
+                // Si el producto ya está en el carrito, buscamos el índice del producto
+                const indexEnCarrito = carroCompras.findIndex(producto => producto.id === index)
 
-        // Sumamos 1 a la cantidad del producto en el carrito
-        carroCompras[indexEnCarrito].cantidad += 1
-        mostrarCarro()
-        precioTotalCarro+=producto.precio
-        cantidadCarro++
-        productosCarro.innerText = cantidadCarro
-        precioTotal.innerText = "$" + precioTotalCarro
-        actualizarPrecio(carroCompras)
-    }
-    })        
-})  
-    
+                // Sumamos 1 a la cantidad del producto en el carrito
+                carroCompras[indexEnCarrito].cantidad += 1
+                mostrarCarro()
+                precioTotalCarro += producto.precio
+                cantidadCarro++
+                productosCarro.innerText = cantidadCarro
+                precioTotal.innerText = "$" + precioTotalCarro
+                actualizarPrecio(carroCompras)
+            }
+        })
+    })
+
 }
 
 
 // mostrar html en carro
 mostrarProductos()
 
-// fetch
-let availableProducts = [];
 
-const getProducts = async () => {
-  try {
-    const response = await fetch("chind4mo.github.io/ProyectoJSn3/");
-    const products = await response.json();
-    availableProducts = products;
-    return products;
-  } catch (error) {
-    console.log(error);
-  }
-};
+//fetch
+
+fetch(productos)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error de red: ${response.status}`)
+        }
+        return response.json()
+    })
+    .then(dataArray => {
+        // Almacenar los datos obtenidos en el array 'productos'
+        productos.push(...dataArray)
+        let timerInterval
+        Swal.fire({
+            title: 'Estamos cargando los productos',
+            icon: 'warning',
+            html: 'Se cerrara automaticamente cuando cargue la pagina. o presiona "continuar navegando" para explorar el resto de la pagina',
+            cancelButtonText: 'Continuar navegando',
+            showCancelButton: true,
+            showCloseButton: true,
+            timer: 7000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('Pagina cargada correctamente.')
+            }
+        })
+        const promise = simularPromesa(dataArray, 7000)
+
+        promise.then(() => {
+            mostrarProductos()
+        }).catch((error) => {
+            console.error('Ocurrió un error:', error)
+        })
+    })
+    .catch(error => {
+        console.error('Ocurrió un error:', error)
+    })
